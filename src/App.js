@@ -1,24 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import QRCode from 'qrcode.react';
 
-function App() {
+const App = () => {
+
+  const [qrcode, setQrcode] = useState('http://facebook.github.io/react/')
+
+  const [field, setField] = useState('')
+
+  const handleQrCode = e => {
+    setField(e.target.value)
+  }
+
+  const generateQrCode = (e) => {
+    e.preventDefault();
+    setQrcode(field);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+
+    <div >
+
+      <form onSubmit={generateQrCode}>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <input
+            placeholder='Name Field'
+            name='field'
+            value={field}
+            onChange={handleQrCode}
+          />
+          <input
+            type='button'
+            value='Generate'
+          />
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </form>
+
+      <div>
+        <QRCode value={qrcode} />
+      </div>
+      <span>Generated: {qrcode}</span>
     </div>
   );
 }

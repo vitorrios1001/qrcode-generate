@@ -19,7 +19,7 @@ const App = () => {
   return (
 
     <div >
-
+      <h3>QRCode Generator</h3>
       <form onSubmit={generateQrCode}>
         <p>
           <input
@@ -29,7 +29,7 @@ const App = () => {
             onChange={handleQrCode}
           />
           <input
-            type='button'
+            type='submit'
             value='Generate'
           />
         </p>
@@ -39,6 +39,11 @@ const App = () => {
         <QRCode value={qrcode} />
       </div>
       <span>Generated: {qrcode}</span>
+
+      <footer>
+        <h5>Produced by: Vitor Rios</h5>
+        <a href='https://github.com/vitorrios1001'>github/vitorrios1001</a>
+      </footer>
     </div>
   );
 }

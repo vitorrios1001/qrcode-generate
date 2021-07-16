@@ -68,7 +68,7 @@ const App = () => {
       </header>
 
       <div className='container-qr-code'>
-        <div className='qr-code'>
+        <div className='qr-code' onClick={() => GAEvents('click', 'qrcode')}>
           <QRCode size={250} value={qrcode} />
         </div>
         <span className='result'>Generated: {qrcode}</span>
